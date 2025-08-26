@@ -1,10 +1,37 @@
 .skill{
     width: 100%;
-    background: #111319;
-    padding: 1rem;
+    background: #8c8d89;
+    color: 626262;
+    font-weight: 600;
+    min-height: 3rem;
+    max-height: 3rem;
+    padding: 0 1rem;
     border-radius: 0.5rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 1rem;
+    font-size: 1.2rem;
     cursor: grab;
+
+
+    &_icon{
+        width: 4.5rem;
+        flex: 0 0 auto;
+        filter: brightness(40%);
+    }
+
+    &_name{
+        flex: 1 1 auto;
+    }
+}
+
+.active{
+    
+    background: #b0e10096;
+    color: #2d4200;
+}
+
+.active_icon{
+   
+        filter: brightness(100%); 
 }

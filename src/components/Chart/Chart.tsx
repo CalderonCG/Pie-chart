@@ -1,22 +1,20 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
 import type { SkillType } from "../../App";
+import './Chart.scss'
 
 type ChartProps = {
   data: SkillType[];
+  points: number
 };
 
-function Chart({ data }: ChartProps) {
+function Chart({ data,points }: ChartProps) {
   const chartRef = useRef<SVGSVGElement | null>(null);
-
   useEffect(() => {
 
 
-    const usedPoints = 100 - data.reduce((acc,skill)=> acc + skill.points,0)
-
-    console.log(usedPoints)
-
-    const usedData = [...data, {skill:'total', points: usedPoints}]
+    const availablePoints = 40 - data.reduce((acc,skill)=> acc + skill.points,0)
+    const usedData = [...data, {skill:'total', points: availablePoints}]
     //svg container
     const w = 200;
     const h = 200;
@@ -33,7 +31,6 @@ function Chart({ data }: ChartProps) {
     const chartData = d3.pie().value((d: SkillType) => d.points)(usedData);
     const chartArc = d3
       .arc()
-      .cornerRadius(10)
       .innerRadius(innerRadius)
       .outerRadius(radius);
     const chartColors = d3.scaleOrdinal<string>().domain(data.map((d)=> d.skill)).range(d3.schemeSet2);
@@ -48,8 +45,12 @@ function Chart({ data }: ChartProps) {
   }, [data]);
 
   return (
-    <div>
+    <div className="chart">
       <svg ref={chartRef}></svg>
+      <div className="chart_available">
+        <p>Available points</p>
+        <p>{points} / 40</p>
+      </div>
     </div>
   );
 }
