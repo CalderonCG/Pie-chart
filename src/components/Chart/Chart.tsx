@@ -2,8 +2,6 @@ import { useEffect, useRef } from "react";
 import * as d3 from "d3";
 import type { SkillType } from "../../App";
 
-
-
 type ChartProps = {
   data: SkillType[];
 };
@@ -38,14 +36,15 @@ function Chart({ data }: ChartProps) {
       .cornerRadius(10)
       .innerRadius(innerRadius)
       .outerRadius(radius);
-    const chartColors = d3.scaleOrdinal().range(d3.schemeSet2);
+    const chartColors = d3.scaleOrdinal<string>().domain(data.map((d)=> d.skill)).range(d3.schemeSet2);
 
     //mapping svg
     g.selectAll()
       .data(chartData)
       .join("path")
       .attr("d", chartArc)
-      .attr("fill", (d) => chartColors(d.value));
+      .attr("fill", (d) =>
+  d.data.skill === "total" ? "#ccc" : chartColors(d.data.skill));
   }, [data]);
 
   return (

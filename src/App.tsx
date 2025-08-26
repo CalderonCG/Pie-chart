@@ -48,7 +48,7 @@ function App() {
     { id: "16", skill: "Ragnarok", points: 50, status: "AVAILABLE" },
     { id: "17", skill: "Sonic Blade", points: 50, status: "AVAILABLE" },
     { id: "18", skill: "Glide", points: 20, status: "AVAILABLE" },
-    { id: "19", skill: "High Jump", points: 2, status: "AVAILABLE" },
+    { id: "19", skill: "High Jump", points: 20, status: "AVAILABLE" },
     { id: "20", skill: "Explosion", points: 40, status: "AVAILABLE" },
   ];
   //States--------------------------------------------------------------------
