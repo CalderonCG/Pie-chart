@@ -2,11 +2,16 @@
 
 .app_container {
   @include m.flexCenter(column, center);
-
+  width: 100%;
   padding: 4rem;
   gap: 2rem;
 
-
+  &_stats{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    gap: 5rem;
+  }
   &_skills{
     display: flex;
     width: 100%;

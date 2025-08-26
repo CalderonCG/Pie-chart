@@ -17,8 +17,8 @@ function Skill({ skill }: SkillProps) {
     >
       <img src={`/images/${skill.type}.png`} 
       className={clsx('skill_icon', {active_icon: skill.status=== 'EQUIPPED'})} alt="icon" />
-      <p className="skill_name">{skill.skill}</p>
-      <p className="skill_cost">{skill.points} BP</p>
+      <span className="skill_name">{skill.skill}</span>
+      <p className={clsx('skill_cost', {active_cost: skill.status === 'EQUIPPED'})}>{skill.points} BP</p>
     </div>
   );
 }

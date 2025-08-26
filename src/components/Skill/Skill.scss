@@ -1,37 +1,49 @@
-.skill{
-    width: 100%;
-    background: #8c8d89;
-    color: 626262;
-    font-weight: 600;
-    min-height: 3rem;
-    max-height: 3rem;
-    padding: 0 1rem;
-    border-radius: 0.5rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    font-size: 1.2rem;
-    cursor: grab;
+.skill {
+  width: 100%;
+  background: #8c8d89;
+  color: 626262;
+  font-weight: 600;
+  min-height: 3rem;
+  max-height: 3rem;
+  padding: 0 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.2rem;
+  cursor: grab;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
+  &_cost {
+    background-color: #666666;
+    padding: 0.5rem;
+    width: 4.5rem;
+    border-radius: 1rem;
+    color: #b7b9b8;
+  }
 
-    &_icon{
-        width: 4.5rem;
-        flex: 0 0 auto;
-        filter: brightness(40%);
-    }
+  &_icon {
+    width: 4.5rem;
+    flex: 0 0 auto;
+    filter: brightness(40%);
+  }
 
-    &_name{
-        flex: 1 1 auto;
-    }
+  &_name {
+    flex: 1 1 auto;
+  }
 }
 
-.active{
-    
-    background: #b0e10096;
-    color: #2d4200;
+.active {
+  background: #b0e100;
+  color: #2d4200;
 }
 
-.active_icon{
-   
-        filter: brightness(100%); 
+.active_icon {
+  filter: brightness(100%);
+}
+
+.active_cost {
+  background-color: #4ba62c;
+
+  color: #d3f2cf;
 }

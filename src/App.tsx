@@ -9,15 +9,15 @@ import {
   type DragStartEvent,
 } from "@dnd-kit/core";
 import Skill from "./components/Skill/Skill";
+import Character from "./components/Character/Character";
 
 //Types-------------------------------------------------------------------------------
 export type SkillType = {
   id: string;
   skill: string;
   points: number;
-  type: 'Jump' |'Hammer'| 'Utility'
+  type: "Jump" | "Hammer" | "Utility";
   status: "AVAILABLE" | "EQUIPPED";
-
 };
 
 export type ColumnType = {
@@ -32,27 +32,147 @@ function App() {
     { id: "EQUIPPED", status: "Equipped" },
   ];
   const initialSkills: SkillType[] = [
-  { id: '1', skill: 'Power Jump', points: 5, type: 'Jump', status: 'AVAILABLE' },
-  { id: '2', skill: 'High Jump', points: 8, type: 'Jump', status: 'AVAILABLE' },
-  { id: '3', skill: 'Ultra Jump', points: 10, type: 'Jump', status: 'AVAILABLE' },
-  { id: '4', skill: 'Super Hammer', points: 7, type: 'Hammer', status: 'AVAILABLE' },
-  { id: '5', skill: 'Mega Hammer', points: 9, type: 'Hammer', status: 'AVAILABLE' },
-  { id: '6', skill: 'Power Smash', points: 6, type: 'Hammer', status: 'AVAILABLE' },
-  { id: '7', skill: 'Lucky Day', points: 3, type: 'Utility', status: 'AVAILABLE' },
-  { id: '8', skill: 'HP Plus', points: 4, type: 'Utility', status: 'AVAILABLE' },
-  { id: '9', skill: 'Defense Plus', points: 5, type: 'Utility', status: 'AVAILABLE' },
-  { id: '10', skill: 'Fire Drive', points: 7, type: 'Utility', status: 'AVAILABLE' },
-  { id: '11', skill: 'Power Rush', points: 6, type: 'Jump', status: 'AVAILABLE' },
-  { id: '12', skill: 'Spike Shield', points: 8, type: 'Utility', status: 'AVAILABLE' },
-  { id: '13', skill: 'Frighten', points: 2, type: 'Hammer', status: 'AVAILABLE' },
-  { id: '14', skill: 'Flower Saver', points: 5, type: 'Utility', status: 'AVAILABLE' },
-  { id: '15', skill: 'Sleepy Shell', points: 4, type: 'Hammer', status: 'AVAILABLE' },
-  { id: '16', skill: 'Bounce Attack', points: 6, type: 'Jump', status: 'AVAILABLE' },
-  { id: '17', skill: 'Double Dip', points: 3, type: 'Utility', status: 'AVAILABLE' },
-  { id: '18', skill: 'Power Plus', points: 7, type: 'Utility', status: 'AVAILABLE' },
-  { id: '19', skill: 'Ultra Defense', points: 9, type: 'Utility', status: 'AVAILABLE' },
-  { id: '20', skill: 'Quick Change', points: 5, type: 'Utility', status: 'AVAILABLE' },
-];
+    {
+      id: "1",
+      skill: "Power Jump",
+      points: 5,
+      type: "Jump",
+      status: "AVAILABLE",
+    },
+    {
+      id: "2",
+      skill: "High Jump",
+      points: 8,
+      type: "Jump",
+      status: "AVAILABLE",
+    },
+    {
+      id: "3",
+      skill: "Ultra Jump",
+      points: 10,
+      type: "Jump",
+      status: "AVAILABLE",
+    },
+    {
+      id: "4",
+      skill: "Super Hammer",
+      points: 7,
+      type: "Hammer",
+      status: "AVAILABLE",
+    },
+    {
+      id: "5",
+      skill: "Mega Hammer",
+      points: 9,
+      type: "Hammer",
+      status: "AVAILABLE",
+    },
+    {
+      id: "6",
+      skill: "Power Smash",
+      points: 6,
+      type: "Hammer",
+      status: "AVAILABLE",
+    },
+    {
+      id: "7",
+      skill: "Lucky Day",
+      points: 3,
+      type: "Utility",
+      status: "AVAILABLE",
+    },
+    {
+      id: "8",
+      skill: "HP Plus",
+      points: 4,
+      type: "Utility",
+      status: "AVAILABLE",
+    },
+    {
+      id: "9",
+      skill: "Defense Plus",
+      points: 5,
+      type: "Utility",
+      status: "AVAILABLE",
+    },
+    {
+      id: "10",
+      skill: "Fire Drive",
+      points: 7,
+      type: "Utility",
+      status: "AVAILABLE",
+    },
+    {
+      id: "11",
+      skill: "Power Rush",
+      points: 6,
+      type: "Jump",
+      status: "AVAILABLE",
+    },
+    {
+      id: "12",
+      skill: "Spike Shield",
+      points: 8,
+      type: "Utility",
+      status: "AVAILABLE",
+    },
+    {
+      id: "13",
+      skill: "Frighten",
+      points: 2,
+      type: "Hammer",
+      status: "AVAILABLE",
+    },
+    {
+      id: "14",
+      skill: "Flower Saver",
+      points: 5,
+      type: "Utility",
+      status: "AVAILABLE",
+    },
+    {
+      id: "15",
+      skill: "Sleepy Shell",
+      points: 4,
+      type: "Hammer",
+      status: "AVAILABLE",
+    },
+    {
+      id: "16",
+      skill: "Bounce Attack",
+      points: 6,
+      type: "Jump",
+      status: "AVAILABLE",
+    },
+    {
+      id: "17",
+      skill: "Double Dip",
+      points: 3,
+      type: "Utility",
+      status: "AVAILABLE",
+    },
+    {
+      id: "18",
+      skill: "Power Plus",
+      points: 7,
+      type: "Utility",
+      status: "AVAILABLE",
+    },
+    {
+      id: "19",
+      skill: "Ultra Defense",
+      points: 9,
+      type: "Utility",
+      status: "AVAILABLE",
+    },
+    {
+      id: "20",
+      skill: "Quick Change",
+      points: 5,
+      type: "Utility",
+      status: "AVAILABLE",
+    },
+  ];
   //States--------------------------------------------------------------------
   const [skills, setSkills] = useState<SkillType[]>(initialSkills);
   const [activeSkill, setActiveSkill] = useState<SkillType | null>(null);
@@ -91,7 +211,7 @@ function App() {
 
     if (newAvailablePoints >= 0) {
       setSkills(newList);
-      setAvaiblablePoints(newAvailablePoints)
+      setAvaiblablePoints(newAvailablePoints);
     } else {
       return;
     }
@@ -102,7 +222,15 @@ function App() {
   return (
     <div className="app_container">
       <h1>Skill points</h1>
-      <Chart points={availablePoints} data={skills.filter((skill) => skill.status === "EQUIPPED")} />
+      <div className="app_container_stats">
+        <Character
+          skills={skills.filter((skill) => skill.status === "EQUIPPED")}
+        />
+        <Chart
+          points={availablePoints}
+          data={skills.filter((skill) => skill.status === "EQUIPPED")}
+        />
+      </div>
       <h1>Skills</h1>
       <div className="app_container_skills">
         <DndContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
