@@ -1,0 +1,11 @@
+.list{
+    width: 20rem;
+    height: 40rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: #2b303f;
+    padding: 1rem;
+    border-radius: 1rem;
+}

@@ -1,0 +1,15 @@
+@use "./styles/mixins" as m;
+
+.app_container {
+  @include m.flexCenter(column, center);
+
+  padding: 4rem;
+  gap: 2rem;
+
+
+  &_skills{
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+  }
+}
