@@ -36,7 +36,6 @@ function Chart({ data }: ChartProps) {
     const chartArc = d3
       .arc()
       .cornerRadius(10)
-      .padAngle(0.1)
       .innerRadius(innerRadius)
       .outerRadius(radius);
     const chartColors = d3.scaleOrdinal().range(d3.schemeSet2);
@@ -47,7 +46,7 @@ function Chart({ data }: ChartProps) {
       .join("path")
       .attr("d", chartArc)
       .attr("fill", (d) => chartColors(d.value));
-  }, []);
+  }, [data]);
 
   return (
     <div>
