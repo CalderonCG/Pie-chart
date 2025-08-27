@@ -221,7 +221,7 @@ function App() {
 
   return (
     <div className="app_container">
-      <h1>Skill points</h1>
+      <span className="app_container_title">Skill points</span>
       <div className="app_container_stats">
         <Character
           skills={skills.filter((skill) => skill.status === "EQUIPPED")}
@@ -231,7 +231,7 @@ function App() {
           data={skills.filter((skill) => skill.status === "EQUIPPED")}
         />
       </div>
-      <h1>Skills</h1>
+      <span className="app_container_title">Skills</span>
       <div className="app_container_skills">
         <DndContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
           {columns.map((column) => (

@@ -1,20 +1,21 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import * as d3 from "d3";
 import type { SkillType } from "../../App";
-import './Chart.scss'
+import "./Chart.scss";
 
+//Types-----------------------------------------------------------------
 type ChartProps = {
   data: SkillType[];
-  points: number
+  points: number;
 };
 
-function Chart({ data,points }: ChartProps) {
-  const chartRef = useRef<SVGSVGElement | null>(null);
+function Chart({ data, points }: ChartProps) {
+  
+  //Chart setup--------------------------------------------------------------------------------------------
+  const chartRef = useRef<SVGSVGElement | null>(null); // Reference for chart
+
   useEffect(() => {
-
-
-    const availablePoints = 40 - data.reduce((acc,skill)=> acc + skill.points,0)
-    const usedData = [...data, {skill:'total', points: availablePoints}]
+    const usedData: SkillType[] = [...data, { skill: "Total", points: points, type: "Total", status:"EQUIPPED" }];
     //svg container
     const w = 200;
     const h = 200;
@@ -29,11 +30,8 @@ function Chart({ data,points }: ChartProps) {
 
     //generating chart
     const chartData = d3.pie().value((d: SkillType) => d.points)(usedData);
-    const chartArc = d3
-      .arc()
-      .innerRadius(innerRadius)
-      .outerRadius(radius);
-    const chartColors = d3.scaleOrdinal<string>().domain(data.map((d)=> d.skill)).range(d3.schemeSet2);
+    const chartArc = d3.arc().innerRadius(innerRadius).outerRadius(radius);
+
 
     //mapping svg
     g.selectAll()
@@ -41,15 +39,17 @@ function Chart({ data,points }: ChartProps) {
       .join("path")
       .attr("d", chartArc)
       .attr("fill", (d) =>
-  d.data.skill === "total" ? "#ccc" : chartColors(d.data.skill));
+        d.data.type === "Utility" ?  "#cc488d" : d.data.type === 'Hammer' ? "#cc3623" :
+      d.data.type === 'Jump' ? "#2f71a9"  : "#d9efa2"
+      );
   }, [data]);
 
   return (
     <div className="chart">
-      <svg ref={chartRef}></svg>
+      <svg ref={chartRef} />
       <div className="chart_available">
-        <p>Available points</p>
-        <p>{points} / 40</p>
+        <p className="chart_available_label">Remaining BP</p>
+        <p className="chart_available_points">{points} / 40</p>
       </div>
     </div>
   );

@@ -9,17 +9,27 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); 
-    width: 9.375rem;   
+
+    background: radial-gradient(circle, #f2fed5, #c8e57e);
+    transform: translate(-50%, -50%);
+    width: 9.375rem;
     height: 9.375rem;
     border-radius: 50%;
-    background: #ccc; 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     font-weight: bold;
     gap: 1rem;
-    color: black;
+    color: #3a471b;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+    &_points {
+      color: white;
+      font-size: 2rem;
+      text-shadow: -1px -1px 0 #000, /* Top-left shadow */ 1px -1px 0 #000,
+        /* Top-right shadow */ -1px 1px 0 #000,
+        /* Bottom-left shadow */ 3px 3px 0 #000;
+    }
   }
 }
